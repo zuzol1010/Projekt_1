@@ -12,9 +12,13 @@ int main ()
   {'*','.','.','.','.'},
   };
 
-  int x=2,y=2;
+  int x=2;
+  int y=2;
   int punkty=0;
   char ruch;
+
+  plansza[x][y] = 'P';
+
   while(punkty<5){
     system("cls");
 
@@ -26,20 +30,22 @@ int main ()
     }
     cout << "PUNKTY: " << punkty <<endl;
     cout << "RUCH (w-gora, s-dol, a-lewo, d-prawo:)";
-    cin >>ruch;
-    plansza [y][x]=='.';
+    cin >> ruch;//getch rozwazyc
+    int stare_x=x;
+    int stare_y=y;
+    if(ruch=='w' && x>0) x--;
+    if(ruch=='s' && x<4) x++;
+    if(ruch=='a' && y>0) y--;
+    if(ruch=='d' && y<4) y++;
+    plansza[stare_x][stare_y]='.';
+    plansza[x][y]='P';
+    if(plansza[x][y]=='*'){
+        punkty++;
+    }
 
-    if(ruch=='w' && y>0) y--;
-    if(ruch=='s' && y<4) y++;
-    if(ruch=='a' && y>0) x--;
-    if(ruch=='d' && y<4) x++;
-
-            if(plansza[y][x]=='*'){
-            punkty++;
-    plansza[y][x]='P';
-  }
-  }
+    }
+    //plansza[y][x]='P';
+ system ("cls");
   cout << "BRAWO! Zebrales wszystkie przedmioty :D" <<endl;
   return 0;
 }
-
