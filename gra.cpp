@@ -1,9 +1,12 @@
 #include <iostream>
+#include <cstdio>
+#include <conio.h>
 
 using namespace std;
 
 int main ()
 {
+
  char plansza [5][5] = {
   {'.','.','.','.','*'},
   {'.','*','.','.','*'},
@@ -30,19 +33,20 @@ int main ()
     }
     cout << "PUNKTY: " << punkty <<endl;
     cout << "RUCH (w-gora, s-dol, a-lewo, d-prawo:)";
-    cin >> ruch;//getch rozwazyc
+    //cin >> ruch;//getch rozwazyc
+    ruch = getch();
+    if (ruch>='A' && ruch<='Z') ruch+=32;
     int stare_x=x;
     int stare_y=y;
     if(ruch=='w' && x>0) x--;
     if(ruch=='s' && x<4) x++;
     if(ruch=='a' && y>0) y--;
     if(ruch=='d' && y<4) y++;
-    plansza[stare_x][stare_y]='.';
-    plansza[x][y]='P';
     if(plansza[x][y]=='*'){
         punkty++;
     }
-
+ plansza[stare_x][stare_y]='.';
+    plansza[x][y]='P';
     }
     //plansza[y][x]='P';
  system ("cls");
